@@ -44,7 +44,7 @@ routerWarehouse.post("/postWarehouses" , async(req,res) => {
             location : newWarehouse.location
         }
     }
-    res.status(201).send(`Warehouse created successfully ${JSON.stringify(response)}`);
+    res.status(201).send(JSON.stringify(response));
 });
 
 

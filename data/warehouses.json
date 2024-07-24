@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "Almacén Caribe",
+    "location": "Cartagena"
+  },
+  {
+    "id": 2,
+    "name": "Almacén Andino",
+    "location": "Bogotá"
+  }
+]
