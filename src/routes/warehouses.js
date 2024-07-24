@@ -27,15 +27,15 @@ const writeWarehousesFs = async(warehouse) =>
 // //Rutas del router
 // //POST
 routerWarehouse.post("/postWarehouses" , async(req,res) => {
-    const warehouse = await readWarehousesFs();
+    const warehouses = await readWarehousesFs();
     const newWarehouse = {
-        id : warehouse.length + 1,
+        id : warehouses.length + 1,
         name : req.body.name,
         location : req.body.location
     }
 
-    warehouse.push(newWarehouse);
-    await writeWarehousesFs(warehouse);
+    warehouses.push(newWarehouse);
+    await writeWarehousesFs(warehouses);
     const response = {
         message: "Warehouse created successfully",
         warehouse: {
@@ -47,12 +47,54 @@ routerWarehouse.post("/postWarehouses" , async(req,res) => {
     res.status(201).send(JSON.stringify(response));
 });
 
+//GET
+routerWarehouse.get("/" , async (req,res) => {
+    const warehouses = await readWarehousesFs()
+    const response = {
+        warehouses
+    }
+    res.status(200).send(JSON.stringify(response));
+});
 
+//GET BY ID
+routerWarehouse.get("/:warehouseId" , async (req,res) => {
+    const warehouses = await readWarehousesFs();
+    const warehouse = warehouses.find(w => w.id === parseInt(req.params.warehouseId));
+    if(!warehouse) return res.status(404).send("Warehouse not found");
+    const response = {
+        warehouse
+    }
+    res.status(200).send(JSON.stringify(response));
+})
 
+//PUT BY ID
+routerWarehouse.put("/:id" , async (req,res) => {
+    const warehouses = await readWarehousesFs();
+    const indexWarehouse = warehouses.findIndex(w => w.id === parseInt(req.params.id));
+    if(indexWarehouse === -1) return res.status(404).send("Warehouse not found");
+    const updateWarehouse = {
+        ...warehouses[indexWarehouse],
+        name : req.body.name,
+        location: req.body.location
+    }
 
+    warehouses[indexWarehouse] = updateWarehouse;
+    await writeWarehousesFs(warehouses);
+    res.status(200).send(JSON.stringify(updateWarehouse));
+});
 
+//DELETE BY ID
+routerWarehouse.delete("/delete/:id" , async(req,res) => {
+    let warehouses = await readWarehousesFs();
+    const warehouse = warehouses.find(w => w.id === parseInt(req.params.id));
+    if(!warehouse) return res.status(404).send("Warehouse not found");
+    warehouses = warehouses.filter(w => w.id !== warehouse.id);
 
-
-
+    await writeWarehousesFs(warehouses);
+    let response = {
+        message : "Warehouse deleted successfully"
+    }
+    res.status(200).send(JSON.stringify(response));
+});
 
 export default routerWarehouse;
