@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Welcome to the Node.js Logistics Management workshop. This project is designed to apply basic concepts of Node.js, Express, promises, and the difference between development and production dependencies. You will create a RESTful API that interacts with the file system instead of a database.",
   "main": "index.js",
+  "type":"module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon"
