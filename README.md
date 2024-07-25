@@ -62,6 +62,8 @@ A vehicle is a machine used to transport goods. It has the following properties:
 ## Relationship Between Entities
 
 - A warehouse can have multiple shipments. However, a shipment can only belong to one warehouse.
+(Un almacén puede tener varios envíos. Sin embargo, un envío sólo puede pertenecer a un almacén.)
+
 - A driver can drive multiple vehicles. However, a vehicle can only be driven by one driver.
 - A vehicle can transport multiple shipments. However, a shipment can only be transported by one vehicle.
 - A shipment can be transported by multiple drivers. However, a driver can only transport one shipment.

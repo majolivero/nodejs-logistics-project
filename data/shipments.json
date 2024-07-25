@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "id": 1,
+    "item": "iPhone 13 Pro Max",
+    "quantity": 30,
+    "warehouseId": 1
+  },
+  {
+    "id": 2,
+    "item": " PlayStation 5",
+    "quantity": 10,
+    "warehouseId": 2
+  },
+  {
+    "id": 3,
+    "item": "Amazon Echo Dot",
+    "quantity": 100,
+    "warehouseId": 3
+  }
+]

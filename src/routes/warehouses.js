@@ -24,8 +24,8 @@ const writeWarehousesFs = async(warehouse) =>
     await fs.writeFile(warehousesFilePath,JSON.stringify(warehouse,null,2));
 
 
-// //Rutas del router
-// //POST
+//Rutas del router
+//POST
 routerWarehouse.post("/postWarehouses" , async(req,res) => {
     const warehouses = await readWarehousesFs();
     const newWarehouse = {
@@ -65,9 +65,9 @@ routerWarehouse.get("/:warehouseId" , async (req,res) => {
         warehouse
     }
     res.status(200).send(JSON.stringify(response));
-})
+});
 
-//PUT BY ID
+//PUT 
 routerWarehouse.put("/:id" , async (req,res) => {
     const warehouses = await readWarehousesFs();
     const indexWarehouse = warehouses.findIndex(w => w.id === parseInt(req.params.id));
@@ -83,7 +83,7 @@ routerWarehouse.put("/:id" , async (req,res) => {
     res.status(200).send(JSON.stringify(updateWarehouse));
 });
 
-//DELETE BY ID
+//DELETE 
 routerWarehouse.delete("/delete/:id" , async(req,res) => {
     let warehouses = await readWarehousesFs();
     const warehouse = warehouses.find(w => w.id === parseInt(req.params.id));
