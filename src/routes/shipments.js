@@ -96,17 +96,4 @@ routerShipment.delete("/delete/:id" , async(req,res) => {
     res.status(200).send(JSON.stringify(response));
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 export default routerShipment;
