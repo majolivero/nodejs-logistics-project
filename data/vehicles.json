@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "id": 1,
+    "model": "Renault Master",
+    "year": 2019
+  },
+  {
+    "id": 2,
+    "model": "Nissan NV3500",
+    "year": 2015
+  }
+]
